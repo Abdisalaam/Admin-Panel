@@ -1,0 +1,27 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "Account Locked";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+
+            <div class="card shadow-sm p-4">
+                <h1 class="text-danger mb-3">Account Locked</h1>
+
+                <p class="lead">
+                    Your account has been temporarily locked due to multiple failed login attempts.
+                </p>
+
+                <p class="text-muted">
+                    Please wait 5 minutes before trying again.
+                    If you believe this is an error, contact your system administrator.
+                </p>               
+                <a href='@Url.Action("Login","Account")'
+                   class="btn btn-secondary small-btn">Return to Login</a>
+            </div>
+
+        </div>
+    </div>
+</div>

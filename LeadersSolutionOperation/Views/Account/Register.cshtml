@@ -1,0 +1,96 @@
+﻿@model LeadersSolutionOperation.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="row w-100">
+        <div class="col-md-6 col-lg-5 mx-auto">
+
+            <h2 class="text-center">Add New User</h2>
+
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.EmployeeName)
+            @Html.TextBoxFor(m => m.EmployeeName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.EmployeeName, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        </div>
+
+                <!-- Password with Show/Hide -->
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.Password)
+
+            <div class="input-group">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", id = "Password" })
+
+                <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('Password')">
+                    <i class="fa fa-eye eye-icon"></i>
+                </button>
+            </div>
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+
+                <!-- Confirm Password with Show/Hide -->
+        <div class="form-group mb-4">
+            @Html.LabelFor(m => m.ConfirmPassword)
+
+            <div class="input-group">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", id = "ConfirmPassword" })
+
+                <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('ConfirmPassword')">
+                    <i class="fa fa-eye eye-icon"></i>
+                </button>
+            </div>
+            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+                <div class="form-group mb-4">
+                    <div class="form-check">
+                        @Html.CheckBoxFor(m => m.MakeAdmin, new { @class = "form-check-input" })
+                        @Html.LabelFor(m => m.MakeAdmin, new { @class = "form-check-label" })
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Register</button>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    <script>
+     document.addEventListener('DOMContentLoaded', function () {
+
+         var message = "@ViewBag.Message";
+         if (message) {
+             Snackbar.show({
+                 text: message,
+                 pos: 'top-center'
+             });
+         }
+    });
+    </script>
+    <script>
+        function togglePassword(id) {
+            var input = document.getElementById(id);
+            if (input.type === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
+        }
+    </script>
+
+}

@@ -1,0 +1,23 @@
+﻿@using System.Security.Claims
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()        
+           
+        var employeeName = ((ClaimsIdentity)User.Identity).FindFirst("EmployeeName")?.Value;
+        
+        <ul class="navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Hello " + employeeName + "!", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+            </li>
+            <li><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="navbar-nav navbar-right">
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
+    </ul>
+}

@@ -1,0 +1,56 @@
+﻿@model LeadersSolutionOperation.Models.ContactUs
+
+@{
+    ViewBag.Title = "Details of Contact Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="details-section pt-115 rpt-95 rpb-65 px-60 rpx-0">
+
+    <div class="details-card">
+        <h2 class="details-title">Contact Request Details</h2>
+
+        <div class="details-grid">
+
+            <div class="details-item">
+                <span class="label">@Html.DisplayNameFor(m => m.Name)</span>
+                <span class="value">@Html.DisplayFor(m => m.Name)</span>
+            </div>
+
+            <div class="details-item">
+                <span class="label">@Html.DisplayNameFor(m => m.Email)</span>
+                <span class="value">@Html.DisplayFor(m => m.Email)</span>
+            </div>
+
+            <div class="details-item">
+                <span class="label">@Html.DisplayNameFor(m => m.Mobile)</span>
+                <span class="value">@Html.DisplayFor(m => m.Mobile)</span>
+            </div>
+
+            <div class="details-item">
+                <span class="label">@Html.DisplayNameFor(m => m.Service)</span>
+                <span class="value">@Html.DisplayFor(m => m.Service)</span>
+            </div>
+
+            <div class="details-item">
+                <span class="label">@Html.DisplayNameFor(m => m.Comment)</span>
+                <span class="value">@Html.DisplayFor(m => m.Comment)</span>
+            </div>
+
+            <div class="details-item">
+                <span class="label">@Html.DisplayNameFor(m => m.ContactedDate)</span>
+                <span class="value">@Html.DisplayFor(m => m.ContactedDate)</span>
+            </div>
+
+        </div>
+
+        <div class="details-actions">
+            <a href='@Url.Action("Delete", "ContactUs", new { id = Model.Id })'
+               class="btn btn-danger small-btn">Delete</a>
+
+            <a href='@Url.Action("Index", "ContactUs")'
+               class="btn btn-secondary small-btn">Back to List</a>
+        </div>
+    </div>
+
+</section>
+

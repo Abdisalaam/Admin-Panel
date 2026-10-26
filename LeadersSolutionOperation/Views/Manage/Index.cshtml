@@ -1,0 +1,37 @@
+﻿@model LeadersSolutionOperation.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main aria-labelledby="title" class="container py-4">
+
+    <h2 id="title" class="mb-3">@ViewBag.Title</h2>
+
+    @if (!String.IsNullOrEmpty(ViewBag.StatusMessage))
+    {
+        <p class="text-success mb-4">@ViewBag.StatusMessage</p>
+    }
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <h4 class="mb-3">Account Settings</h4>
+            <hr />
+
+            <dl class="row">
+
+                <dt class="col-sm-3">Password</dt>
+                <dd class="col-sm-9">
+                    @if (Model.HasPassword)
+                    {
+                        @Html.ActionLink("Change your password", "ChangePassword", null, new { @class = "btn btn-outline-primary btn-sm" })
+                    }                   
+                </dd>                
+
+            </dl>
+
+        </div>
+    </div>
+
+</main>

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<LeadersSolutionOperation.Models.NewsLetters>
+
+@{
+    ViewBag.Title = "IndexOfNewsLetters";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="pt-115 rpt-95 rpb-65 px-60 rpx-0">
+
+    <div class="container">
+
+        <h2 class="mb-3">List of Subscription Applications</h2>
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+
+                        <thead class="table-light">
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                                <th>@Html.DisplayNameFor(model => model.SubscriptionDate)</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(m => item.Email)</td>
+                                    <td>@Html.DisplayFor(m => item.SubscriptionDate)</td>
+
+                                    <td class="text-center">
+                                        <a href="@Url.Action("DeleteNewsLetter", new { id = item.Id })"
+                                           class="btn btn-sm btn-outline-danger">
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var message = "@ViewBag.Message";
+            if (message) {
+                Snackbar.show({
+                    text: message,
+                    pos: 'top-center'
+                });
+            }
+        });
+    </script>
+}

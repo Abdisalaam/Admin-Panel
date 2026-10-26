@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no">
+    <title>@ViewBag.Title - LS Operation</title>
+
+    <!-- Favicon & Browser Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="@Url.Content("~/Assets/images/logos/LeadersSolutionLogo.png")" />
+    <link rel="icon" type="image/png" sizes="16x16" href="@Url.Content("~/Assets/images/logos/LeadersSolutionLogo.png")" />
+    <link rel="apple-touch-icon" sizes="180x180" href="@Url.Content("~/Assets/images/logos/LeadersSolutionLogo.png")" />
+    <link rel="shortcut icon" href="@Url.Content("~/Asset/images/logos/LeadersSolutionLogo.png")" type="image/x-icon">
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/font")
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- Notification Style -->
+    @*<link rel="stylesheet" href="@Url.Content("~/Content/snackbar.min.css")">
+        <link rel="stylesheet" href="@Url.Content("~/Content/snackbar.min.css")">*@
+    @*<link rel="stylesheet" href="@Url.Content("~/Content/fonts/font-awesome-5.9.0.css")">*@
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />*@
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            <a href="@Url.Action("Index", "Home")" class="navbar-brand d-flex align-items-center">
+                <img src="@Url.Content("~/Asset/images/logos/LSLeadersWhiteText.png")" alt="LS Logo" style="height:40px; margin-right:10px;">
+                <span>LS Operation</span>
+            </a>
+            @*@Html.ActionLink("LS Operation", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Contacted Us", "Index", "ContactUs", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Subscriptions", "IndexOfNewsLetters", "ContactUs", new { area = "" }, new { @class = "nav-link" })</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Add New User", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
+                    }
+                    @*<li>@Html.ActionLink("Add user", "Register", "Account", new { area = "" }, new { @class = "nav-link" })</li>*@
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Leaders Solutions</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/snackbar")
+    <!-- Notification -->
+    @*<script src="@Url.Content("~/Scripts/snackbar.min.js")"></script>*@
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

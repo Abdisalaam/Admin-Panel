@@ -1,0 +1,125 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+
+.details-card {
+    background: #fff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    max-width: 850px;
+    margin: auto;
+}
+
+.details-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px 40px;
+}
+
+
+.details-item {
+    display: flex;
+    flex-direction: column;
+}
+
+    .details-item .label {
+        font-weight: 600;
+        color: #444;
+        margin-bottom: 6px;
+    }
+
+    .details-item .value {
+        font-size: 15px;
+        color: #222;
+    }
+
+.details-actions {
+    margin-top: 35px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.small-btn {
+    padding: 6px 18px;
+    font-size: 14px;
+    border-radius: 6px;
+}
+img {
+    border-radius: 10px; /* soft rounded corners */
+    object-fit: cover; /* prevents stretching */
+}
+.eye-icon {
+    color: #54bebf;
+    transition: 0.2s;
+}
+    .eye-icon:hover {
+        color: #00fdff;
+    }
+
+
+
+/* Mobile fix */
+@media (max-width: 576px) {
+    .details-grid {
+        grid-template-columns: 1fr; /* one column on mobile */
+        padding: 0 10px; /* reduce horizontal padding */
+    }
+
+    .details-section {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .details-card {
+        margin: 0 5px; /* prevent overflow */
+    }
+}
+/* Desktop: keep buttons inline */
+.actions-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Mobile: stack buttons and center them */
+@media (max-width: 576px) {
+    .actions-cell {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+        .actions-cell .btn {
+            width: 100%; /* full width buttons */
+            text-align: center; /* center text */
+        }
+}
+
+
+    
